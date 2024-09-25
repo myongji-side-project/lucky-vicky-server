@@ -1,11 +1,13 @@
-use async_openai::types::{CreateCompletionRequest, CreateCompletionRequestArgs};
+use async_openai::types::CreateCompletionRequestArgs;
+use dotenv::dotenv;
 
 // TODO: OPENAI_API_KEY (https://platform.openai.com/account/api-keys) 환경변수 설정
 #[tokio::main]
 async fn main() {
+    dotenv().expect("Fail to get .env");
     let client = async_openai::Client::new();
     let request = CreateCompletionRequestArgs::default()
-        .model("gpt-4o")
+        .model("gpt-3.5-turbo")
         .prompt("슈게이징 장르를 설명해줘")
         .max_tokens(40_u32)
         .build()
