@@ -1,7 +1,8 @@
 use kalosm::language::*;
+// TODO: OPENAI_API_KEY (https://platform.openai.com/account/api-keys) 환경변수 설정
 #[tokio::main]
 async fn main() {
-    let llm = Llama::new().await.expect("Fail to get llama model");
+    let llm = Gpt3_5::default();
     let prompt = "Write 300 word essay of shoegaze which is music genre.";
 
     let mut stream = llm
